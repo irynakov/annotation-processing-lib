@@ -1,0 +1,16 @@
+<FindBugsFilter>
+
+    <Match>
+        <Package name="~io\.oxygen\.controller\.v1.*"/>
+    </Match>
+
+    <Match>
+        <Package name="~~io\.swagger.*"/>
+    </Match>
+
+    <Match>
+        <Package name="~grpc\.health\.v1\.*"/>
+    </Match>
+
+
+</FindBugsFilter>

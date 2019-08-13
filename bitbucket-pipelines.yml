@@ -1,0 +1,24 @@
+# This is a sample build configuration for Java (Gradle).
+# Check our guides at https://confluence.atlassian.com/x/zd-5Mw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: java:8
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - gradle
+        script: # Modify the commands below to build your repository.
+          - bash ./gradlew sonarqube -Dsonar.projectKey=annotation-processing-lib -Dsonar.organization=coral-devops-support-bitbucket -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.branch.name=$BITBUCKET_BRANCH
+  branches:
+    "master":
+      - step:
+          caches:
+            - gradle
+          script:
+            - git config user.email "volodymyr.masliy@symphony-solutions.eu"
+            - git config user.name "Volodymyr Masliy"
+            - bash ./gradlew -PnexusUser=$NEXUS_USER -PnexusPass=$NEXUS_PASS test build release
+

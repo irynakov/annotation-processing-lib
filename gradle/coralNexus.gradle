@@ -1,0 +1,20 @@
+ext.nexusUser = project.properties.nexusUser ?: System.getenv("NEXUS_USER")
+ext.nexusPass = project.properties.nexusPass ?: System.getenv("NEXUS_PASS")
+ext.nexusMavenRepo = "https://npm-repo-coral.symphony-solutions.eu/repository/maven-public"
+
+repositories.ext.coralNexus = {
+  repositories.maven nexusRepo()
+}
+project.buildscript.repositories.ext.coralNexus = {
+  project.buildscript.repositories.maven nexusRepo()
+}
+
+Closure nexusRepo() {
+  return{
+    credentials {
+      username = "${nexusUser}"
+      password = "${nexusPass}"
+    }
+    url nexusMavenRepo
+  }
+}

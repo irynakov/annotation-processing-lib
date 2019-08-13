@@ -1,0 +1,19 @@
+apply plugin: 'pmd'
+
+pmd {
+    ignoreFailures = true
+    ruleSetFiles = files(new File(rootDir, 'gradle/pmd_ruleSet.xml'))
+}
+
+tasks.withType(Pmd) {
+    source = fileTree('src/main/java')
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+dependencies {
+    // Required by PMD plugin
+    pmd 'com.qulice:qulice-pmd:0.16.4'
+}

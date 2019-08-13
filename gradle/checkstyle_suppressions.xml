@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+        "/Users/llegkyy/Documents/projects/Coral/code-quality-plugin/src/main/resources/suppressions_1_1.dtd">
+
+<suppressions>
+    <suppress checks="[JavadocPackage|JavadocMethod]" files="[\\/]test[\\/]"/>
+    <suppress checks="[a-zA-Z0-0]*" files="io[\\/]oxygen[\\/]controller[\\/]v1[\\/]"/>
+    <suppress checks="[a-zA-Z0-0]*" files="grpc[\\/]health[\\/]v1[\\/]"/>
+    <suppress checks="DesignForExtension" files="RFC3339DateFormat.java" lines="0-2500"/>
+    <suppress checks="[a-zA-Z0-0]*" files="io[\\/]oxygen[\\/]configuration[\\/]" lines="0-2500"/>
+    <suppress checks="[a-zA-Z0-0]*" files="Application.java" lines="0-2500"/>
+
+
+    <!-- Ignore auto generated code by proto buffer -->
+    <suppress files=".*[\\/]generated[\\/].*" checks="[a-zA-Z0-9]*"/>
+</suppressions>
